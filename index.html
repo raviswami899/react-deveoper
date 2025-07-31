@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Frontend Developer - 1 Week Study Plan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4cc9f0;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4ade80;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --card-bg: #ffffff;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 2rem;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 2.5rem 0;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -80px;
+            right: -50px;
+            width: 250px;
+            height: 250px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+        }
+
+        .logo {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 1.2rem 2rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-card .number {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-card .label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 992px) {
+            .content-wrapper {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            padding: 1.8rem;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .card h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.6rem;
+        }
+
+        .card h2 i {
+            background: rgba(67, 97, 238, 0.1);
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin: 2rem 0 1.5rem;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .section-title::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 80%;
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            min-width: 800px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        thead {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+
+        th {
+            padding: 1.2rem 1rem;
+            text-align: left;
+            font-weight: 500;
+        }
+
+        tbody tr {
+            transition: var(--transition);
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: rgba(67, 97, 238, 0.03);
+        }
+
+        tbody tr:hover {
+            background-color: rgba(67, 97, 238, 0.08);
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .day-cell {
+            font-weight: 600;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .day-cell i {
+            background: rgba(67, 97, 238, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+
+        .focus-cell {
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .todo-list {
+            list-style: none;
+        }
+
+        .todo-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .todo-item:last-child {
+            border-bottom: none;
+        }
+
+        .todo-check {
+            margin-right: 1rem;
+            margin-top: 4px;
+        }
+
+        .todo-check input {
+            display: none;
+        }
+
+        .todo-check label {
+            display: inline-block;
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--gray);
+            border-radius: 6px;
+            cursor: pointer;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .todo-check input:checked + label {
+            background: var(--success);
+            border-color: var(--success);
+        }
+
+        .todo-check input:checked + label::after {
+            content: "\f00c";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        .todo-content {
+            flex: 1;
+        }
+
+        .todo-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+            color: var(--dark);
+        }
+
+        .todo-content p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        input:checked ~ .todo-content h3,
+        input:checked ~ .todo-content p {
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: var(--light-gray);
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent) 0%, var(--primary) 100%);
+            border-radius: 10px;
+            width: 35%;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .resources {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .resource {
+            background: rgba(67, 97, 238, 0.08);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .resource:hover {
+            background: rgba(67, 97, 238, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 1rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .btn i {
+            margin-right: 0.5rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, rgba(76, 201, 240, 0.3) 0%, rgba(76, 201, 240, 0) 100%);
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+
+        .day-progress {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        .day-progress-bar {
+            flex: 1;
+            height: 6px;
+            background: var(--light-gray);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .day-progress-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 10px;
+            width: 40%;
+        }
+
+        .completed {
+            color: var(--success);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fab fa-react"></i>
+            </div>
+            <h1>React Frontend Developer Study Plan</h1>
+            <p class="subtitle">A comprehensive 1-week roadmap to master ReactJS, modern JavaScript, and essential frontend development skills</p>
+            
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="number">7</div>
+                    <div class="label">Days</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">30+</div>
+                    <div class="label">Topics</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">5</div>
+                    <div class="label">Projects</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">100%</div>
+                    <div class="label">Job Ready</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2 class="section-title">Your 1-Week Study Plan</h2>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Focus Area</th>
+                        <th>Topics & Activities</th>
+                        <th>Output</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="day-cell">
+                                <i class="fas fa-code"></i>
+                                Day 1
+                            </div>
+                        </td>
+                        <td class="focus-cell">HTML5, CSS3, Responsive Design</td>
+                        <td>Semantic HTML, Flexbox, Grid, Media Queries, Accessibility (ARIA), Mobile-first</td>
+                        <td>Build a fully responsive layout with header, sidebar, cards, and footer</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="day-cell">
+                                <i class="fab fa-js"></i>
+                                Day 2
+                            </div>
+                        </td>
+                        <td class="focus-cell">JavaScript ES6+</td>
+                        <td>let/const, arrow functions, spread/rest, destructuring, async/await, promises, array methods (map, filter, reduce), modules</td>
+                        <td>Write small JS functions for form validation, API handling, and array operations</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="day-cell">
+                                <i class="fab fa-react"></i>
+                                Day 3
+                            </div>
+                        </td>
+                        <td class="focus-cell">ReactJS Fundamentals</td>
+                        <td>Functional components, Hooks (useState, useEffect, useRef, useMemo), Props, Events, JSX, Conditional Rendering, Lifting State Up</td>
+                        <td>Rebuild a simple To-do App + counter with hooks, show/hide, input bindings</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="day-cell">
+                                <i class="fas fa-route"></i>
+                                Day 4
+                            </div>
+                        </td>
+                        <td class="focus-cell">React Routing & REST APIs</td>
+                        <td>react-router-dom, REST API with fetch and axios, handling errors, loading states, pagination</td>
+                        <td>Create a multi-page app (List, Detail View) using Fake Store API</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="day-cell">
+                                <i class="fas fa-paint-brush"></i>
+                                Day 5
+                            </div>
+                        </td>
+                        <td class="focus-cell">UI Libraries & Forms</td>
+                        <td>Material-UI/Bootstrap (Cards, Buttons, Forms), React Forms, Form validation, Git branches, commits, merge</td>
+                        <td>Implement Login/Signup UI with Material-UI and validate inputs</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="day-cell">
+                                <i class="fas fa-vial"></i>
+                                Day 6
+                            </div>
+                        </td>
+                        <td class="focus-cell">Testing & Performance</td>
+                        <td>Unit testing with Jest + RTL, useEffect cleanup, lazy loading, memoization, Lighthouse, performance optimization</td>
+                        <td>Write test cases for 2 components + optimize a page for performance</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="day-cell">
+                                <i class="fas fa-rocket"></i>
+                                Day 7
+                            </div>
+                        </td>
+                        <td class="focus-cell">Dev Workflow & Deployment</td>
+                        <td>Folder structure, component reusability, linting (ESLint), CI tools (GitHub Actions basics), Agile basics (Scrum roles, sprint boards)</td>
+                        <td>Push a small React app on GitHub + create a CI test workflow</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="card">
+                <h2><i class="fas fa-tasks"></i> Study Plan Checklist</h2>
+                
+                <div class="progress-info">
+                    <span>Weekly Progress</span>
+                    <span>35% Completed</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+                
+                <ul class="todo-list">
+                    <li class="todo-item">
+                        <div class="todo-check">
+                            <input type="checkbox" id="task1">
+                            <label for="task1"></label>
+                        </div>
+                        <div class="todo-content">
+                            <h3>Day 1: Responsive Layout</h3>
+                            <p>Build responsive layout with Flexbox/Grid</p>
+                            <div class="day-progress">
+                                <span>Progress:</span>
+                                <div class="day-progress-bar">
+                                    <div class="day-progress-fill"></div>
+                                </div>
+                                <span>40%</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="todo-item">
+                        <div class="todo-check">
+                            <input type="checkbox" id="task2">
+                            <label for="task2"></label>
+                        </div>
+                        <div class="todo-content">
+                            <h3>Day 2: Modern JavaScript</h3>
+                            <p>Practice ES6+ features and array methods</p>
+                            <div class="day-progress">
+                                <span>Progress:</span>
+                                <div class="day-progress-bar">
+                                    <div class="day-progress-fill" style="width: 30%"></div>
+                                </div>
+                                <span>30%</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="todo-item">
+                        <div class="todo-check">
+                            <input type="checkbox" id="task3" checked>
+                            <label for="task3"></label>
+                        </div>
+                        <div class="todo-content">
+                            <h3 class="completed">Day 3: React Fundamentals</h3>
+                            <p>Create Todo App with React Hooks</p>
+                            <div class="day-progress">
+                                <span class="completed">Completed!</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="todo-item">
+                        <div class="todo-check">
+                            <input type="checkbox" id="task4">
+                            <label for="task4"></label>
+                        </div>
+                        <div class="todo-content">
+                            <h3>Day 4: API Integration</h3>
+                            <p>Build multi-page app with Fake Store API</p>
+                            <div class="day-progress">
+                                <span>Progress:</span>
+                                <div class="day-progress-bar">
+                                    <div class="day-progress-fill" style="width: 20%"></div>
+                                </div>
+                                <span>20%</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="todo-item">
+                        <div class="todo-check">
+                            <input type="checkbox" id="task5">
+                            <label for="task5"></label>
+                        </div>
+                        <div class="todo-content">
+                            <h3>Day 5: UI Library Implementation</h3>
+                            <p>Create forms with Material-UI and validation</p>
+                        </div>
+                    </li>
+                    <li class="todo-item">
+                        <div class="todo-check">
+                            <input type="checkbox" id="task6">
+                            <label for="task6"></label>
+                        </div>
+                        <div class="todo-content">
+                            <h3>Day 6: Testing & Optimization</h3>
+                            <p>Write component tests and optimize performance</p>
+                        </div>
+                    </li>
+                    <li class="todo-item">
+                        <div class="todo-check">
+                            <input type="checkbox" id="task7">
+                            <label for="task7"></label>
+                        </div>
+                        <div class="todo-content">
+                            <h3>Day 7: Deployment & CI/CD</h3>
+                            <p>Deploy React app and setup GitHub Actions</p>
+                        </div>
+                    </li>
+                </ul>
+                
+                <button class="btn">
+                    <i class="fas fa-download"></i> Download Full Plan (PDF)
+                </button>
+            </div>
+            
+            <div class="card">
+                <h2><i class="fas fa-graduation-cap"></i> Learning Resources</h2>
+                
+                <h3>Core Technologies</h3>
+                <div class="resources">
+                    <div class="resource">
+                        <i class="fab fa-react"></i> React Docs
+                    </div>
+                    <div class="resource">
+                        <i class="fab fa-js"></i> MDN JavaScript
+                    </div>
+                    <div class="resource">
+                        <i class="fab fa-css3-alt"></i> CSS Tricks
+                    </div>
+                    <div class="resource">
+                        <i class="fab fa-html5"></i> HTML Reference
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 1.5rem;">Recommended Tools</h3>
+                <ul class="todo-list" style="margin-top: 0.5rem;">
+                    <li class="todo-item">
+                        <div class="todo-check">
+                            <i class="fas fa-check-circle" style="color: var(--success); font-size: 1.2rem;"></i>
+                        </div>
+                        <div class="todo-content">
+                            <h3>VSCode</h3>
+                            <p>With ESLint, Prettier, React snippets</p>
+                        </div>
+                    </li>
+                    <li class="todo-item">
+                        <div class="todo-check">
+                            <i class="fas fa-check-circle" style="color: var(--success); font-size: 1.2rem;"></i>
+                        </div>
+                        <div class="todo-content">
+                            <h3>React DevTools</h3>
+                            <p>Browser extension for debugging</p>
+                        </div>
+                    </li>
+                    <li class="todo-item">
+                        <div class="todo-check">
+                            <i class="fas fa-check-circle" style="color: var(--success); font-size: 1.2rem;"></i>
+                        </div>
+                        <div class="todo-content">
+                            <h3>Git & GitHub</h3>
+                            <p>Version control and collaboration</p>
+                        </div>
+                    </li>
+                    <li class="todo-item">
+                        <div class="todo-check">
+                            <i class="fas fa-download" style="color: var(--gray); font-size: 1.2rem;"></i>
+                        </div>
+                        <div class="todo-content">
+                            <h3>Postman</h3>
+                            <p>API testing and development</p>
+                        </div>
+                    </li>
+                </ul>
+                
+                <h3 style="margin-top: 1.5rem;">Final Deliverables</h3>
+                <ul class="todo-list" style="margin-top: 0.5rem;">
+                    <li class="todo-item">
+                        <div class="todo-check">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="todo-content">
+                            <p>Responsive React App (3-4 pages)</p>
+                        </div>
+                    </li>
+                    <li class="todo-item">
+                        <div class="todo-check">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="todo-content">
+                            <p>API integration from public source</p>
+                        </div>
+                    </li>
+                    <li class="todo-item">
+                        <div class="todo-check">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <div class="todo-content">
+                            <p>Material-UI/Bootstrap implementation</p>
+                        </div>
+                    </li>
+                    <li class="todo-item">
+                        <div class="todo-check">
+                            <i class="fas fa-check-double"></i>
+                        </div>
+                        <div class="todo-content">
+                            <p>Routing, form validation, and tests</p>
+                        </div>
+                    </li>
+                    <li class="todo-item">
+                        <div class="todo-check">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="todo-content">
+                            <p>GitHub repo with CI pipeline</p>
+                        </div>
+                    </li>
+                </ul>
+                
+                <button class="btn">
+                    <i class="fas fa-laptop-code"></i> Start Building Project
+                </button>
+            </div>
+        </div>
+        
+        <footer>
+            <p>React Frontend Developer Study Plan • Created with ❤️ for your career growth</p>
+            <p>Based on industry requirements for ReactJS developers • Updated: July 2023</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simulate progress update
+            setTimeout(() => {
+                document.querySelector('.progress').style.width = '45%';
+                document.querySelector('.progress-info span:last-child').textContent = '45% Completed';
+            }, 1500);
+            
+            // Handle checklist interactions
+            const checkboxes = document.querySelectorAll('.todo-check input');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const item = this.closest('.todo-item');
+                    if (this.checked) {
+                        item.classList.add('completed');
+                    } else {
+                        item.classList.remove('completed');
+                    }
+                    updateProgress();
+                });
+            });
+            
+            function updateProgress() {
+                const total = document.querySelectorAll('.todo-item').length;
+                const completed = document.querySelectorAll('.todo-check input:checked').length;
+                const percentage = Math.round((completed / total) * 100);
+                
+                document.querySelector('.progress').style.width = `${percentage}%`;
+                document.querySelector('.progress-info span:last-child').textContent = `${percentage}% Completed`;
+            }
+        });
+    </script>
+</body>
+</html>
