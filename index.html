@@ -372,6 +372,8 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            text-decoration: none;
+            cursor: pointer;
         }
 
         .resource:hover {
@@ -446,6 +448,104 @@
         .completed {
             color: var(--success);
         }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .resources-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .resource-card {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.05) 0%, rgba(60, 55, 201, 0.05) 100%);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid rgba(67, 97, 238, 0.1);
+            transition: var(--transition);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.1);
+            border-color: rgba(67, 97, 238, 0.2);
+        }
+
+        .resource-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .resource-card h3 i {
+            background: rgba(67, 97, 238, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+
+        .resource-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .resource-link {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem;
+            background: white;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--dark);
+            transition: var(--transition);
+            border: 1px solid var(--light-gray);
+        }
+
+        .resource-link:hover {
+            background: rgba(67, 97, 238, 0.05);
+            border-color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .resource-link i {
+            margin-right: 0.8rem;
+            color: var(--primary);
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .resource-title {
+            font-weight: 500;
+            margin-bottom: 0.2rem;
+        }
+
+        .resource-desc {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        .resource-badge {
+            background: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-left: auto;
+        }
     </style>
 </head>
 <body>
@@ -471,8 +571,8 @@
                     <div class="label">Projects</div>
                 </div>
                 <div class="stat-card">
-                    <div class="number">100%</div>
-                    <div class="label">Job Ready</div>
+                    <div class="number">45</div>
+                    <div class="label">Resources</div>
                 </div>
             </div>
         </div>
@@ -571,6 +671,235 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+
+        <h2 class="section-title">Learning Resources</h2>
+        
+        <div class="resources-grid">
+            <!-- Day 1 Resources -->
+            <div class="resource-card">
+                <h3><i class="fas fa-code"></i> Day 1 - HTML5, CSS3, Responsive Design</h3>
+                <div class="resource-links">
+                    <a href="https://developer.mozilla.org/en-US/docs/Glossary/Semantics#semantics_in_html" class="resource-link" target="_blank">
+                        <i class="fas fa-link"></i>
+                        <div>
+                            <div class="resource-title">HTML Semantic Tags</div>
+                            <div class="resource-desc">MDN Web Docs - Semantic HTML</div>
+                        </div>
+                        <span class="resource-badge">Guide</span>
+                    </a>
+                    <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" class="resource-link" target="_blank">
+                        <i class="fas fa-link"></i>
+                        <div>
+                            <div class="resource-title">CSS Flexbox</div>
+                            <div class="resource-desc">CSS Tricks - Complete Flexbox Guide</div>
+                        </div>
+                        <span class="resource-badge">Cheatsheet</span>
+                    </a>
+                    <a href="https://css-tricks.com/snippets/css/complete-guide-grid/" class="resource-link" target="_blank">
+                        <i class="fas fa-link"></i>
+                        <div>
+                            <div class="resource-title">CSS Grid</div>
+                            <div class="resource-desc">CSS Tricks - Complete Grid Guide</div>
+                        </div>
+                        <span class="resource-badge">Guide</span>
+                    </a>
+                    <a href="https://webaim.org/resources/" class="resource-link" target="_blank">
+                        <i class="fas fa-link"></i>
+                        <div>
+                            <div class="resource-title">Accessibility Guide</div>
+                            <div class="resource-desc">WebAIM - Web Accessibility Resources</div>
+                        </div>
+                        <span class="resource-badge">Reference</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Day 2 Resources -->
+            <div class="resource-card">
+                <h3><i class="fab fa-js"></i> Day 2 - JavaScript Modern (ES6+)</h3>
+                <div class="resource-links">
+                    <a href="https://devhints.io/es6" class="resource-link" target="_blank">
+                        <i class="fas fa-link"></i>
+                        <div>
+                            <div class="resource-title">JavaScript ES6+ Cheatsheet</div>
+                            <div class="resource-desc">Modern JavaScript features cheat sheet</div>
+                        </div>
+                        <span class="resource-badge">Cheatsheet</span>
+                    </a>
+                    <a href="https://javascript.info/async" class="resource-link" target="_blank">
+                        <i class="fas fa-link"></i>
+                        <div>
+                            <div class="resource-title">JS Promises & Async</div>
+                            <div class="resource-desc">JavaScript.info - Async/await guide</div>
+                        </div>
+                        <span class="resource-badge">Tutorial</span>
+                    </a>
+                    <a href="https://sdras.github.io/array-explorer/" class="resource-link" target="_blank">
+                        <i class="fas fa-link"></i>
+                        <div>
+                            <div class="resource-title">Array Methods Visual</div>
+                            <div class="resource-desc">Interactive array method explorer</div>
+                        </div>
+                        <span class="resource-badge">Interactive</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Day 3 Resources -->
+            <div class="resource-card">
+                <h3><i class="fab fa-react"></i> Day 3 - React Basics & Hooks</h3>
+                <div class="resource-links">
+                    <a href="https://react.dev/" class="resource-link" target="_blank">
+                        <i class="fas fa-link"></i>
+                        <div>
+                            <div class="resource-title">React Official Docs</div>
+                            <div class="resource-desc">Official React documentation</div>
+                        </div>
+                        <span class="resource-badge">Docs</span>
+                    </a>
+                    <a href="https://react.dev/reference/react" class="resource-link" target="_blank">
+                        <i class="fas fa-link"></i>
+                        <div>
+                            <div class="resource-title">useState/useEffect</div>
+                            <div class="resource-desc">React Hooks API reference</div>
+                        </div>
+                        <span class="resource-badge">Reference</span>
+                    </a>
+                    <a href="https://react.dev/reference/react" class="resource-link" target="_blank">
+                        <i class="fas fa-link"></i>
+                        <div>
+                            <div class="resource-title">Hooks Overview</div>
+                            <div class="resource-desc">Complete React Hooks guide</div>
+                        </div>
+                        <span class="resource-badge">Guide</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Day 4 Resources -->
+            <div class="resource-card">
+                <h3><i class="fas fa-route"></i> Day 4 - React Router + APIs</h3>
+                <div class="resource-links">
+                    <a href="https://reactrouter.com/en/main/start/tutorial" class="resource-link" target="_blank">
+                        <i class="fas fa-link"></i>
+                        <div>
+                            <div class="resource-title">React Router 6 Tutorial</div>
+                            <div class="resource-desc">Official React Router tutorial</div>
+                        </div>
+                        <span class="resource-badge">Tutorial</span>
+                    </a>
+                    <a href="https://fakestoreapi.com/" class="resource-link" target="_blank">
+                        <i class="fas fa-link"></i>
+                        <div>
+                            <div class="resource-title">Fake Store API</div>
+                            <div class="resource-desc">Free fake API for e-commerce</div>
+                        </div>
+                        <span class="resource-badge">API</span>
+                    </a>
+                    <a href="https://axios-http.com/docs/intro" class="resource-link" target="_blank">
+                        <i class="fas fa-link"></i>
+                        <div>
+                            <div class="resource-title">Axios</div>
+                            <div class="resource-desc">Promise-based HTTP client</div>
+                        </div>
+                        <span class="resource-badge">Library</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Day 5 Resources -->
+            <div class="resource-card">
+                <h3><i class="fas fa-paint-brush"></i> Day 5 - UI Libraries, Forms, Git</h3>
+                <div class="resource-links">
+                    <a href="https://mui.com/material-ui/getting-started/overview/" class="resource-link" target="_blank">
+                        <i class="fas fa-link"></i>
+                        <div>
+                            <div class="resource-title">Material-UI Docs</div>
+                            <div class="resource-desc">Material UI component library</div>
+                        </div>
+                        <span class="resource-badge">Docs</span>
+                    </a>
+                    <a href="https://react-bootstrap.github.io/" class="resource-link" target="_blank">
+                        <i class="fas fa-link"></i>
+                        <div>
+                            <div class="resource-title">Bootstrap React</div>
+                            <div class="resource-desc">Bootstrap components for React</div>
+                        </div>
+                        <span class="resource-badge">Library</span>
+                    </a>
+                    <a href="https://docs.github.com/en/get-started/using-git/about-git" class="resource-link" target="_blank">
+                        <i class="fas fa-link"></i>
+                        <div>
+                            <div class="resource-title">GitHub Git Basics</div>
+                            <div class="resource-desc">Git fundamentals from GitHub</div>
+                        </div>
+                        <span class="resource-badge">Tutorial</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Day 6 Resources -->
+            <div class="resource-card">
+                <h3><i class="fas fa-vial"></i> Day 6 - Testing & Optimization</h3>
+                <div class="resource-links">
+                    <a href="https://testing-library.com/docs/react-testing-library/intro/" class="resource-link" target="_blank">
+                        <i class="fas fa-link"></i>
+                        <div>
+                            <div class="resource-title">Jest + RTL</div>
+                            <div class="resource-desc">React Testing Library introduction</div>
+                        </div>
+                        <span class="resource-badge">Testing</span>
+                    </a>
+                    <a href="https://react.dev/reference/react/memo" class="resource-link" target="_blank">
+                        <i class="fas fa-link"></i>
+                        <div>
+                            <div class="resource-title">React Performance</div>
+                            <div class="resource-desc">Optimizing React performance</div>
+                        </div>
+                        <span class="resource-badge">Guide</span>
+                    </a>
+                    <a href="https://developer.chrome.com/docs/lighthouse/overview/" class="resource-link" target="_blank">
+                        <i class="fas fa-link"></i>
+                        <div>
+                            <div class="resource-title">Lighthouse Performance</div>
+                            <div class="resource-desc">Auditing web app performance</div>
+                        </div>
+                        <span class="resource-badge">Tool</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Day 7 Resources -->
+            <div class="resource-card">
+                <h3><i class="fas fa-rocket"></i> Day 7 - Dev Practices & Agile</h3>
+                <div class="resource-links">
+                    <a href="https://reactjs.org/docs/faq-structure.html" class="resource-link" target="_blank">
+                        <i class="fas fa-link"></i>
+                        <div>
+                            <div class="resource-title">React Project Structure</div>
+                            <div class="resource-desc">Best practices for organizing React apps</div>
+                        </div>
+                        <span class="resource-badge">Guide</span>
+                    </a>
+                    <a href="https://docs.github.com/en/actions/learn-github-actions" class="resource-link" target="_blank">
+                        <i class="fas fa-link"></i>
+                        <div>
+                            <div class="resource-title">GitHub Actions Intro</div>
+                            <div class="resource-desc">CI/CD with GitHub Actions</div>
+                        </div>
+                        <span class="resource-badge">CI/CD</span>
+                    </a>
+                    <a href="https://www.scrum.org/resources/what-is-scrum" class="resource-link" target="_blank">
+                        <i class="fas fa-link"></i>
+                        <div>
+                            <div class="resource-title">Agile Scrum Basics</div>
+                            <div class="resource-desc">Introduction to Scrum methodology</div>
+                        </div>
+                        <span class="resource-badge">Methodology</span>
+                    </a>
+                </div>
+            </div>
         </div>
 
         <div class="content-wrapper">
@@ -688,25 +1017,9 @@
             </div>
             
             <div class="card">
-                <h2><i class="fas fa-graduation-cap"></i> Learning Resources</h2>
+                <h2><i class="fas fa-graduation-cap"></i> Essential Tools & Resources</h2>
                 
-                <h3>Core Technologies</h3>
-                <div class="resources">
-                    <div class="resource">
-                        <i class="fab fa-react"></i> React Docs
-                    </div>
-                    <div class="resource">
-                        <i class="fab fa-js"></i> MDN JavaScript
-                    </div>
-                    <div class="resource">
-                        <i class="fab fa-css3-alt"></i> CSS Tricks
-                    </div>
-                    <div class="resource">
-                        <i class="fab fa-html5"></i> HTML Reference
-                    </div>
-                </div>
-                
-                <h3 style="margin-top: 1.5rem;">Recommended Tools</h3>
+                <h3>Recommended Tools</h3>
                 <ul class="todo-list" style="margin-top: 0.5rem;">
                     <li class="todo-item">
                         <div class="todo-check">
@@ -832,6 +1145,17 @@
                 document.querySelector('.progress').style.width = `${percentage}%`;
                 document.querySelector('.progress-info span:last-child').textContent = `${percentage}% Completed`;
             }
+            
+            // Handle resource links
+            const resourceLinks = document.querySelectorAll('.resource-link');
+            resourceLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (!this.getAttribute('href')) {
+                        e.preventDefault();
+                        alert('Resource link clicked! In a real implementation, this would open the actual resource.');
+                    }
+                });
+            });
         });
     </script>
 </body>
